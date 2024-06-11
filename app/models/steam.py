@@ -53,6 +53,32 @@ def run_steamcmd(steamcmd_folder):
 # def login_steam(username, passwrod, target_folder):
 #     client = stea
 
+def create_base_file():
+  dir_name = ' MyDedServer'
+  if not os.path.exists(dir_name):
+      os.makedirs(dir_name)
+    
+  sub_dirs = ['Master', 'Caves']
+  for sub_dir in sub_dirs:
+     full_path = os.path.join(dir_name, sub_dir)
+     if not os.path.exists(full_path):
+        os.makedirs(full_path) 
+
+  config_files = [
+     'cluster.ini',
+      'cluster_token.txt',
+      'Master/server.ini',
+      'Master/modoverrides.lua',
+      'Master/worldgenoverride.lua',
+      'Caves/server.ini',
+      'Caves/modoverrides.lua',
+      'Caves/worldgenoverride.lua'
+  ]
+
+  for config_file in config_files:
+     full_path = os.path.join(dir_name, config_file)
+
+
 def create_start_bat():
   print('bat脚本')
   # 定义要写入的BAT脚本内容
@@ -86,5 +112,5 @@ def test():
       run_steamcmd('D:\\steamcmd')
       print('安装成功')
       
-# test()
-create_start_bat()
+test()
+# create_start_bat()
